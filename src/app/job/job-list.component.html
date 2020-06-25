@@ -1,0 +1,27 @@
+<h1>Lista de empleados</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Type</th>
+            <th>Url</th>
+            <th>Position</th>
+            <th>Location</th>
+            <th>Logo</th>
+            <th>Description</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let job of data">
+          <td>{{job.company}}</td>
+          <td>{{job.type}}</td>
+          <td>{{job.url}}</td>
+          <td>{{job.position}}</td>
+          <td>{{job.logo}}</td>
+          <td>{{job.description}}</td>
+          <td>{{job.category.tipo}}</td>
+        </tr>
+    </tbody>
+</table>
