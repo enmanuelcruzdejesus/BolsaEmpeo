@@ -1,27 +1,43 @@
-<h1>Lista de empleados</h1>
+<div class="bg">
 
-<table>
-    <thead>
-        <tr>
-            <th>Company</th>
-            <th>Type</th>
-            <th>Url</th>
-            <th>Position</th>
-            <th>Location</th>
-            <th>Logo</th>
-            <th>Description</th>
-            <th>Category</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let job of data">
-          <td>{{job.company}}</td>
-          <td>{{job.type}}</td>
-          <td>{{job.url}}</td>
-          <td>{{job.position}}</td>
-          <td>{{job.logo}}</td>
-          <td>{{job.description}}</td>
-          <td>{{job.category.tipo}}</td>
-        </tr>
-    </tbody>
-</table>
+    <th class="bg">Categoria</th>
+    <hr>
+    <div class="example-header">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+
+        <mat-table [dataSource]="dataSource" matSort>
+
+
+
+            <!-- Location Column -->
+            <ng-container matColumnDef="location">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.location}}% </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Position </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
+            </ng-container>
+
+            <!-- Company Column -->
+            <ng-container matColumnDef="company">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Company </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.company}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+
+</div>
