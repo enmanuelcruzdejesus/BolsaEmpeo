@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginatorModule,MatPaginator} from '@angular/material/paginator';
 import { MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { DataService } from '../services/data.service';
@@ -22,7 +22,7 @@ export class JobListComponent implements OnInit {
   displayedColumns = [ 'location', 'position', 'company'];
   dataSource: MatTableDataSource<JobData>;
 
-  @ViewChild(MatPaginatorModule) paginator: MatPaginatorModule;
+  @ViewChild(MatPaginatorModule) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
 
