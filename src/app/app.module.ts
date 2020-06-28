@@ -1,24 +1,34 @@
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthguardService } from './services/authguard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, rountingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataService } from "./services/data.service";
-import { JobListComponent } from './job/job-list.component';
+import { from } from 'rxjs';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    JobListComponent
+    rountingComponents
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [DataService],
+  providers: [DataService,AuthguardService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

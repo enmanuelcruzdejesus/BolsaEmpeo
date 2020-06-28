@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Url</th>
+            <th>Position</th>
+            <th>Location</th>
+            <th>Company Email</th>
+            <th>Description</th>
+            <th>Logo</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let j of jobs">
+          <td>{{j.company}}</td>
+          <td>{{j.category}}</td>
+          <td>{{j.type}}</td>
+          <td>{{j.url}}</td>
+          <td>{{j.position}}</td>
+          <td>{{j.location}}</td>
+          <td>{{j.compemail}}</td>
+          <td>{{j.description}}</td>
+          <td>{{j.logo}}</td>
+          <td>{{j.date}}</td>
+        </tr>
+    </tbody>
+</table>
