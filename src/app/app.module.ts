@@ -11,13 +11,15 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { PostJobComponent } from './post-job/post-job.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     JobListComponent,
-    JobDetailComponent
+    JobDetailComponent,
+    PostJobComponent
   ],
   imports: [
     MatPaginatorModule,
