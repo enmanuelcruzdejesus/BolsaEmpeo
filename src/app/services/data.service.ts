@@ -102,6 +102,11 @@ export class DataService {
     return localStorage.getItem('token');
   }
 
+  logoutUser(): void{
+    localStorage.removeItem('token');
+    
+  }
+
   errorHandler(errorResponse: HttpErrorResponse){
      if(errorResponse.error instanceof ErrorEvent){
        console.error("Client side error", errorResponse.error.message);
