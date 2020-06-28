@@ -8,6 +8,9 @@ import { DataService } from "./services/data.service";
 import { JobListComponent } from './job/job-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JobDetailComponent } from './job-detail/job-detail.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -17,6 +20,9 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
     JobDetailComponent
   ],
   imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

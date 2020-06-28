@@ -1,1 +1,46 @@
-<p>job-detail works!</p>
+<div class='card'>
+    <div class='card-header'>
+        {{pageTitle + ': ' + job.company}}
+    </div>
+
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-8'>
+                <div class='row'>
+                    <div class='col-md-4'>Position:</div>
+                    <div class='col-md-8'>{{job.position}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Category:</div>
+                    <div class='col-md-8'>{{job.category | lowercase | convertToSpaces: '-'}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Type:</div>
+                    <div class='col-md-8'>{{job.type}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Description:</div>
+                    <div class='col-md-8'>{{job.description}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>Date:</div>
+                    <div class='col-md-8'>{{job.date}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4'>URL:</div>
+                    <div class='col-md-8'> {{job.url}} </div>
+                </div>
+            </div>
+
+            <div class='col-md-4'>
+                <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2' [src]='job.logo' [title]='job.company'>
+            </div>
+        </div>
+    </div>
+
+    <div class='card-footer'>
+        <button class='btn btn-outline-secondary' (click)='onBack()' style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+    </div>
+</div>
