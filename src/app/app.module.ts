@@ -12,8 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PostJobComponent } from './post-job/post-job.component';
-import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -21,11 +21,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     JobListComponent,
     JobDetailComponent,
-    PostJobComponent,
-    LoginComponent
+    PostJobComponent
+
   ],
   imports: [
-    BrowserModule, ReactiveFormsModule,
+    BrowserModule,
     MatPaginatorModule,
     MatTableModule,
     MatFormFieldModule,
