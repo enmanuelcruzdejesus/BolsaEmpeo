@@ -26,6 +26,8 @@ let date1: Date = new Date("2019-01-16");
 
 export class JobListComponent implements OnInit {
 
+  dtOptions: DataTables.Settings = {};
+
   /*
  ELEMENT_DATA: Job[] = [
   {company: "Claro", position: 'Hydrogen', location: "Santo Domingo", category:ejemplo, url: "", email: "", logo:"", description: "", date: date1, type: "" },
@@ -49,33 +51,64 @@ export class JobListComponent implements OnInit {
   jobs: Job[];
   constructor(private service: DataService, private router: Router) { }
 
-  CATEGORIES: Category[];
+  CATEGORIES: string[] = [];
 
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
+    this.fetchJobs(); 
     
-    this.service.getJobs().subscribe((res)=>{
-      this.jobs = res;
-      
-      this.jobs.forEach(element => {
-
-        if(!this.CATEGORIES.includes(element.category)){
-          this.CATEGORIES.push(element.category);
-
-        }
-        
-      });
-
-       
-      
-    },(err) =>{
-      console.error(err);
-    })
-
+  //  this.categoryFiller();
+    
+    
 
 
   }
 
+  categoryFiller(){
+
+    for(let counter in this.jobs){
+
+      
+      if(!this.CATEGORIES.includes(this.jobs[counter].category.tipo)){
+
+        this.CATEGORIES.push(this.jobs[counter].category.tipo);
+        console.log("hola",this.jobs[counter].category.tipo);
+      }
+
+    }
+
+   
+
+  }
+  fetchJobs(){
+
+    this.service.getJobs().subscribe((res)=>{
+      this.jobs = res;
+      
+      console.log(res);
+
+      for(let counter in this.jobs){
+
+      
+        if(!this.CATEGORIES.includes(this.jobs[counter].category.tipo)){
+  
+          this.CATEGORIES.push(this.jobs[counter].category.tipo);
+          console.log(this.jobs[counter].category.tipo);
+        }
+  
+      }
+      
+  
+    },(err) =>{
+      console.error(err);
+    })
+
+   
+
+  }
 
 
 }
