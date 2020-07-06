@@ -2,7 +2,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthguardService } from './services/authguard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule, rountingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTablesModule } from 'angular-datatables';
 import { PostJobComponent } from './jobs/post-job.component';
+
 
 
 
@@ -28,6 +29,7 @@ import { PostJobComponent } from './jobs/post-job.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     DataTablesModule
 
