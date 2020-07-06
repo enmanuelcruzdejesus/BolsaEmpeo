@@ -1,0 +1,16 @@
+#postJobButton {
+    margin-left: 950px;
+    margin-top: 25px;
+}
+
+.titulo {
+    font-size: 3.75em;
+    margin-top: 25px;
+    margin-left: 335px;
+    text-shadow: blue;
+}
+
+#detailButton {
+    width: 80px;
+    height: 40px;
+}
