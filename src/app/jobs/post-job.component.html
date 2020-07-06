@@ -6,7 +6,14 @@
             <input type="text" id="username" name="company" [(ngModel)]="job.company" class="col-md-5 form-control">
         </div>
 
+        <div class="form-group">
+            <label for="category" class="control-label">Categories</label>
+            <select id="category" name="category" [(ngModel)]="job.category">
+                <option *ngFor = "let val of categories" [value]="val.tipo">{{val.tipo}}</option>
+            </select>
+        </div>
 
+        
 
         <div class="form-group">
             <label for="tipo" class="control-label">Tipo: </label>
