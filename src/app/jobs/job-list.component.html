@@ -1,23 +1,26 @@
-<div class="Container">
-    <div *ngFor="let cat of CATEGORIES">
+<div>
+    <button class="btn btn-primary col-md-3" (click)="postJob()">Post Job</button>
+    <div class="container mt-5" *ngFor="let cat of CATEGORIES">
         <h1>{{cat}}</h1>
         <hr>
-        <table datatable [dtOptions]="dtOptions" class="row-border hover">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped table-bordered row-border hover">
             <thead>
                 <tr>
-                    <th>Date</th>
+
                     <th>Company</th>
                     <th>Position</th>
                     <th>Location</th>
+                    <th>Detail</th>
 
                 </tr>
             </thead>
             <tbody *ngFor="let job of jobs">
                 <tr *ngIf="job.category.tipo === cat">
-                    <td>{{job.date}}</td>
+
                     <td>{{job.company}}</td>
                     <td>{{job.position}}</td>
                     <td>{{job.location}}</td>
+                    <td><button class="btn btn-primary col-md-3" (click)="jobDetail(job._id)">Go</button></td>
                 </tr>
 
             </tbody>

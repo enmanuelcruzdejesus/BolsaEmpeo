@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>New Job</h1>
+    <form action="" method="POST">
+        <div class="form-group">
+            <label for="company" class="control-label">Company Name:</label>
+            <input type="text" id="username" name="company" [(ngModel)]="job.company" class="col-md-5 form-control">
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="tipo" class="control-label">Tipo: </label>
+            <input type="text" id="tipo" class="col-md-5 form-control" name="tipo" [(ngModel)]="job.type" />
+        </div>
+
+        <div class="form-group">
+            <label for="url" class="control-label">Url: </label>
+            <input type="url" id="url" class="col-md-5 form-control" name="url" [(ngModel)]="job.url">
+        </div>
+
+        <div class="form-group">
+            <label for="position" class="control-label">Position: </label>
+            <input type="text" id="position" class="col-md-5 form-control" name="position" [(ngModel)]="job.position">
+        </div>
+
+        <div class="form-group">
+            <label for="location" class="control-label">Location: </label>
+            <input type="text" id="location" class="col-md-5 form-control" name="location" [(ngModel)]="job.location">
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="control-label">Email: </label>
+            <input type="text" id="email" class="col-md-5 form-control" name="email" [(ngModel)]="job.email">
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="control-label">Descripcion: </label>
+            <input type="text" id="description" class="col-md-5 form-control" name="description" [(ngModel)]="job.description">
+        </div>
+
+        <div class="form-group">
+            <label for="date" class="control-label">Date: </label>
+            <input type="datetime-local" id="date" name="date" [(ngModel)]="job.date" placeholder="yyyy-MM-ddTHH:mm:ss" min="2018-01-01T00:00:00" max="2021-12-31T00:00:00" required />
+        </div>
+
+
+        <div class="panel-footer">
+            <button class="btn btn-primary" (click)="postJob()">Post</button>
+        </div>
+
+
+
+    </form>
+</div>

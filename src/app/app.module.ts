@@ -11,13 +11,16 @@ import { DataService } from "./services/data.service";
 import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTablesModule } from 'angular-datatables';
+import { PostJobComponent } from './jobs/post-job.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    rountingComponents
+    rountingComponents,
+    PostJobComponent
   
   ],
   imports: [

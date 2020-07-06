@@ -1,1 +1,15 @@
-<p>job-detail works!</p>
+<div class="container">
+    <h2>Posicion: {{job.position}}</h2>
+    <p>Descripcion: {{job.description}} </p>
+    <form action="" method="get">
+        <h3>Compañia: {{job.company}}</h3>
+        <h3>Categoria: {{job.category.tipo}}</h3>
+        <h3>Tipo: {{job.type}} </h3>
+        <h3>Url: {{job.url}}</h3>
+        <h3>Locacion: {{job.location}}</h3>
+        <h3>Email: {{job.email}} </h3>
+        <img src="job.logo" alt="Logo">
+        <h3>Date: {{job.date}}</h3>
+    </form>
+
+</div>
