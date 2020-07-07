@@ -21,11 +21,18 @@ export class JobListComponent implements OnDestroy, OnInit {
   CATEGORIES: string[] = [];
   jobs:any;
   dtTrigger = new Subject();
+  config = {
+    itemsPerPage: 10,
+    currentPage: 1
+  };;
   
 
 
  
-  constructor(private service: DataService, private router: Router) { }
+  constructor(private service: DataService, private router: Router) {
+
+    
+   }
 
   
 
@@ -119,6 +126,11 @@ export class JobListComponent implements OnDestroy, OnInit {
 
   }
 
+
+
+pageChanged(event){
+  this.config.currentPage = event;
+}
 
 
 

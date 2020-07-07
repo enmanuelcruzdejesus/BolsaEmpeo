@@ -12,7 +12,7 @@ import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTablesModule } from 'angular-datatables';
 import { PostJobComponent } from './jobs/post-job.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -29,7 +29,8 @@ import { PostJobComponent } from './jobs/post-job.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxPaginationModule
 
   ],
   providers: [DataService,AuthguardService,{
