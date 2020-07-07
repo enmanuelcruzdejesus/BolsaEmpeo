@@ -1,30 +1,36 @@
-<div>
+<div class="bg-container" style="position: relative;">
     <h1 class="titulo">Bolsa de Empleos</h1>
-    <button id="postJobButton" class="btn btn-primary btn-lg" (click)="postJob()">Post Job</button>
-    <div class="container mt-5" *ngFor="let cat of CATEGORIES">
-        <h1>{{cat}}</h1>
-        <hr>
-        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped table-bordered row-border hover">
-            <thead>
-                <tr>
+    <hr>
+    <div class="container" style="position: relative;"><button id="postJobButton" class="btn btn-primary btn-lg" (click)="postJob()">Post Job</button></div>
+    <div class="container" style="position: relative;">
 
-                    <th>Company</th>
-                    <th>Position</th>
-                    <th>Location</th>
-                    <th>Detail</th>
 
-                </tr>
-            </thead>
-            <tbody *ngFor="let job of jobs">
-                <tr *ngIf="job.category.tipo === cat">
+        <div class="container mt-5" *ngFor="let cat of CATEGORIES">
 
-                    <td>{{job.company}}</td>
-                    <td>{{job.position}}</td>
-                    <td>{{job.location}}</td>
-                    <td><button class="btn btn-primary col-md-3" (click)="jobDetail(job._id)">Go</button></td>
-                </tr>
+            <h1>{{cat}}</h1>
+            <hr>
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped table-bordered row-border hover">
+                <thead>
+                    <tr>
 
-            </tbody>
-        </table>
+                        <th>Company</th>
+                        <th>Position</th>
+                        <th>Location</th>
+                        <th>Detail</th>
+
+                    </tr>
+                </thead>
+                <tbody *ngFor="let job of jobs">
+                    <tr *ngIf="job.category.tipo === cat">
+
+                        <td>{{job.company}}</td>
+                        <td>{{job.position}}</td>
+                        <td>{{job.location}}</td>
+                        <td><button id="detailButton" class="btn btn-primary col-md-3" (click)="jobDetail(job._id)">Go</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
