@@ -2,7 +2,7 @@ import { Category } from "./category";
 
 export class Job{
     company: string;
-    category: Category;
+    category: string;
     type: string;
     url: string;
     position: string;

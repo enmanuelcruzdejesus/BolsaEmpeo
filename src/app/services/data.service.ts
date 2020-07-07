@@ -82,9 +82,9 @@ export class DataService {
 
   }
 
-  createJob(j: Job): Observable<Job>{
+  createJob(formData: FormData): Observable<Job>{
 
-    return this.httpClient.post<Job>("http://localhost:5000/api/jobs/",j,this.httpOptions);
+    return this.httpClient.post<Job>("http://localhost:5000/api/jobs/",formData);
      
   }
 
