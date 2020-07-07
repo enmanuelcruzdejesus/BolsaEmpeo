@@ -120,7 +120,7 @@ export class JobListComponent implements OnDestroy, OnInit {
   
     },(err) =>{
       console.error(err);
-    })
+    });
 
    
 

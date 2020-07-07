@@ -11,7 +11,8 @@ import { DataService } from '../services/data.service';
 })
 export class JobDetailComponent implements OnInit {
 
-  job : any;
+    public response  : any = null;
+  job = new Job();
   
   constructor(private route: ActivatedRoute, private service: DataService) {
     
@@ -21,9 +22,20 @@ export class JobDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
       console.log(id);
-       this.job = this.service.getJobById(id);
-      console.log(this.job);
+      this.service.getJobById(id).subscribe((res)=>{
 
+        this.response = res;
+        this.job = this.response;
+        
+
+      });
+
+     
+      /*this.response = this.service.getJobById(id);
+       console.log("res=> "+this.response);
+       this.job = this.response;
+      console.log("JOB=> "+this.job);
+*/
     });
 
     
