@@ -9,7 +9,6 @@ import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 import { PostJobComponent } from './jobs/post-job.component';
 
 
-
 const routes: Routes = [
   {path: '' , redirectTo: "/login" , pathMatch: 'full'},
   {path:'jobs' , component: JobListComponent, canActivate: [AuthguardService]},

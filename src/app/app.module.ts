@@ -15,6 +15,15 @@ import { PostJobComponent } from './jobs/post-job.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +39,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     BrowserAnimationsModule,
     DataTablesModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
+
+
+
 
   ],
   providers: [DataService,AuthguardService,{
