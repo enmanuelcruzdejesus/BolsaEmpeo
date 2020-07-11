@@ -1,3 +1,4 @@
+import { Config } from './../models/config';
 import { Job } from "src/app/models/job";
 import { Injectable } from '@angular/core';
 import {Observable, throwError} from 'rxjs';
@@ -53,13 +54,13 @@ export class DataService {
 
   createCategory(c: Category): Observable<Category>{
 
-     return this.httpClient.post<Category>("http://localhost:5000/api/category/",c,this.httpOptions);
+     return this.httpClient.post<Category>("http://localhost:5000/api/categories/",c,this.httpOptions);
      
   }
 
   updateCategory(c: Category): Observable<Category>{
 
-    return this.httpClient.put<Category>("http://localhost:5000/api/category/",c,this.httpOptions);
+    return this.httpClient.put<Category>("http://localhost:5000/api/categories/",c,this.httpOptions);
     
  }
 
@@ -92,6 +93,17 @@ export class DataService {
     return this.httpClient.put<Job>("http://localhost:5000/api/jobs/",j,this.httpOptions);
   }
 
+  getConfigs(): Observable<Config[]> {
+
+  
+     return this.httpClient.get<Config[]>("http://localhost:5000/api/configs/",this.httpOptions);
+     
+ }
+
+ updateConfigs(){
+   
+ }
+
  
 
   loggedIn(): boolean{
@@ -106,6 +118,8 @@ export class DataService {
     localStorage.removeItem('token');
     
   }
+
+
 
   errorHandler(errorResponse: HttpErrorResponse){
      if(errorResponse.error instanceof ErrorEvent){

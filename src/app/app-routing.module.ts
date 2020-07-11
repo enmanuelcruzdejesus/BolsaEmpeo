@@ -1,3 +1,5 @@
+
+import { AdminPanelComponent } from './jobs/admin-panel.component';
 import { AuthguardService } from './services/authguard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,18 +13,21 @@ import { PostJobComponent } from './jobs/post-job.component';
 
 
 const routes: Routes = [
-  {path: '' , redirectTo: "/login" , pathMatch: 'full'},
-  {path:'jobs' , component: JobListComponent, canActivate: [AuthguardService]},
-  {path:'jobs/:id' , component: JobDetailComponent, canActivate: [AuthguardService]},
+  {path: '' , redirectTo: "/jobs" , pathMatch: 'full'},
+  {path:'jobs' , component: JobListComponent},
+  {path:'jobs/:id' , component: JobDetailComponent},
   {path:'login' , component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path:'create-job' , component: PostJobComponent},
+  {path: 'adminpanel', component: AdminPanelComponent },
   {path: '**' , component: PagenotfoundComponent}
+ 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
-export const rountingComponents = [JobListComponent,JobDetailComponent,LoginComponent,RegisterComponent,PagenotfoundComponent,PostJobComponent];
+export const rountingComponents = [JobListComponent,JobDetailComponent,LoginComponent,RegisterComponent,PagenotfoundComponent,PostJobComponent,AdminPanelComponent];

@@ -22,7 +22,7 @@ export class JobListComponent implements OnDestroy, OnInit {
   jobs:any;
   dtTrigger = new Subject();
   config = {
-    itemsPerPage: 10,
+    itemsPerPage: 3,
     currentPage: 1
   };;
   
@@ -42,7 +42,7 @@ export class JobListComponent implements OnDestroy, OnInit {
       pageLength: 10
     };
 
-    
+ 
    
     
     
@@ -58,7 +58,10 @@ export class JobListComponent implements OnDestroy, OnInit {
   //  this.categoryFiller();
     
     
-
+    //  this.service.getConfigs().subscribe((res)=>{
+    //    let c = res.pop();
+    //    this.config.itemsPerPage = c.amount;
+    //  })
 
   }
 
@@ -132,6 +135,25 @@ pageChanged(event){
   this.config.currentPage = event;
 }
 
+login(){
+  this.router.navigate(['/login']);
+
+}
+
+signUp(){
+
+  this.router.navigate(['/register']);
+
+}
+
+adminPanel(){
+  this.router.navigate(['/adminpanel']);
+}
+
+logout(){
+  this.service.logoutUser();
+  this.router.navigate(['']);
+}
 
 
 }

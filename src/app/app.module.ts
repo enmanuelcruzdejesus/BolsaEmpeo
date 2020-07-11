@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTablesModule } from 'angular-datatables';
 import { PostJobComponent } from './jobs/post-job.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminPanelComponent } from './jobs/admin-panel.component';
+import { PipesModule } from 'w-ng5';
+
 
 
 
@@ -22,6 +25,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppComponent,
     rountingComponents,
     PostJobComponent
+    
   
   ],
   imports: [
@@ -32,7 +36,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     DataTablesModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    PipesModule
 
   ],
   providers: [DataService,AuthguardService,{
