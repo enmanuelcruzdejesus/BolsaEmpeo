@@ -24,7 +24,12 @@ export class LoginComponent implements OnInit {
       this.user = res.user;
       this.response = res;    
       this.router.navigate(['/jobs']);
-   })
+
+   },
+    (error) => {
+      console.error(error);
+    }
+   )
   }
 
 

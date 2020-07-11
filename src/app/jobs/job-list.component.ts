@@ -19,12 +19,13 @@ export class JobListComponent implements OnDestroy, OnInit {
   dtOptions: DataTables.Settings = {};
   detailj:any;
   CATEGORIES: string[] = [];
-  jobs:any;
+  jobs = { count: 60, data: []}
   dtTrigger = new Subject();
   config = {
     itemsPerPage: 3,
-    currentPage: 1
-  };;
+    currentPage: 1,
+    totalItems: this.jobs.count,
+  };
   
 
 
@@ -39,9 +40,9 @@ export class JobListComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 1,
     };
-
+    
  
    
     
