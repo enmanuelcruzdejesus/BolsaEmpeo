@@ -17,14 +17,21 @@ import {JobDetailComponent} from '../jobs/job-detail.component';
 
 export class JobListComponent implements OnDestroy, OnInit {
   dtOptions: DataTables.Settings = {};
+
+  itemsPerPage: 2;
   detailj:any;
   CATEGORIES: string[] = [];
-  jobs:any;
+  jobs : Job[] = [];
+  p: { [id: string]: number} = {};
+  
+
   dtTrigger = new Subject();
+
   config = {
-    itemsPerPage: 3,
-    currentPage: 1
-  };;
+    itemsPerPage: 50,
+    currentPage: 1,
+    totalItems: this.itemsPerPage,
+  };
   
 
 
@@ -39,29 +46,12 @@ export class JobListComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 1,
     };
 
- 
-   
-    
-    
-   /* this.service.getJobs().subscribe(jobs=>{
-      this.jobs = jobs;
-      this.dtTrigger.next();
-    });
-    */
-
     this.fetchJobs(); 
+   
     this.dtTrigger.next();
-    
-  //  this.categoryFiller();
-    
-    
-    //  this.service.getConfigs().subscribe((res)=>{
-    //    let c = res.pop();
-    //    this.config.itemsPerPage = c.amount;
-    //  })
 
   }
 
@@ -90,6 +80,7 @@ export class JobListComponent implements OnDestroy, OnInit {
       
     });
     for(let counter in this.jobs){
+      
 
       
       if(!this.CATEGORIES.includes(this.jobs[counter].category.tipo)){
@@ -101,6 +92,7 @@ export class JobListComponent implements OnDestroy, OnInit {
     }
   }
   fetchJobs(){
+    
 
     this.service.getJobs().subscribe((res)=>{
       this.jobs = res;
@@ -109,13 +101,13 @@ export class JobListComponent implements OnDestroy, OnInit {
       console.log(res);
       
 
-      for(let counter in this.jobs){
-
+      for(let counter of this.jobs){
+        this.itemsPerPage+=1;
       
-        if(!this.CATEGORIES.includes(this.jobs[counter].category.tipo)){
+        if(!this.CATEGORIES.includes(counter.category.tipo)){
   
-          this.CATEGORIES.push(this.jobs[counter].category.tipo);
-          console.log(this.jobs[counter].category.tipo);
+          this.CATEGORIES.push(counter.category.tipo);
+          console.log(counter.category.tipo);
         }
   
       }
@@ -154,6 +146,7 @@ logout(){
   this.service.logoutUser();
   this.router.navigate(['']);
 }
+
 
 
 }

@@ -1,7 +1,7 @@
 <div class="bg-container" style="position: relative;">
     <h1 class="titulo">Bolsa de Empleos</h1>
     <hr>
-    <div  class="mainmenu container">
+    <div class="mainmenu container">
         <div class="leftmenu">
             <input id="search" type="text">
             <button id="buttonSearch">Search</button>
@@ -14,7 +14,7 @@
             <button id="logoutButton" class="btn btn-danger btn-md" (click)="logout()">Log Out</button>
 
         </div>
-      
+
     </div>
     <div class="container" style="position: relative;">
 
@@ -34,7 +34,7 @@
 
                     </tr>
                 </thead>
-                <tbody *ngFor="let job of jobs | paginate: config">
+                <tbody *ngFor="let job of jobs | paginate: {id: cat, itemsPerPage: 2 , currentPage:p[cat]}">
                     <tr *ngIf="job.category.tipo === cat">
 
                         <td>{{job.company}}</td>
@@ -45,7 +45,7 @@
 
                 </tbody>
             </table>
-            <pagination-controls id="pagination1" (pageChange)="pageChanged($event)"></pagination-controls>
+            <pagination-controls id={{cat}} (pageChange)="p[cat]=$event"></pagination-controls>
         </div>
     </div>
 </div>
