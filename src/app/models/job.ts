@@ -1,6 +1,7 @@
 import { Category } from "./category";
 
 export class Job{
+    _id: string;
     company: string;
     category: string;
     type: string;

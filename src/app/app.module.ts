@@ -15,6 +15,7 @@ import { PostJobComponent } from './jobs/post-job.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AdminPanelComponent } from './jobs/admin-panel.component';
 import { PipesModule } from 'w-ng5';
+import { ControlPanelComponent } from './jobs/control-panel.component';
 
 
 
@@ -24,7 +25,8 @@ import { PipesModule } from 'w-ng5';
   declarations: [
     AppComponent,
     rountingComponents,
-    PostJobComponent
+    PostJobComponent,
+    ControlPanelComponent
     
   
   ],

@@ -93,6 +93,10 @@ export class DataService {
     return this.httpClient.put<Job>("http://localhost:5000/api/jobs/",j,this.httpOptions);
   }
 
+  deleteJob(id: string): Observable<any>{
+    return this.httpClient.delete<any>("http://localhost:5000/api/jobs/"+id,this.httpOptions);
+  }
+
   getConfigs(): Observable<Config[]> {
 
   
