@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from './services/data.service';
+import { Component, OnInit } from '@angular/core';
+
 
 
 @Component({
@@ -6,9 +9,40 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   title = 'BolsaEmpleo';
 
-  public token: string;
+
+  constructor(private service: DataService, private router : Router){}
+
+  showNav(): boolean {
+
+    if(this.getCurrentUrl() ==='/login' || this.getCurrentUrl() === '/register')
+    return false;
+
+    return true;
+
+  }
+
+  getCurrentUrl(): string{
+    return this.router.url;
+  }
+  
+  userLoggedIn(): boolean{
+    return this.service.loggedIn();    
+  }
+
+
+  ngOnInit(){
+
+     
+  }
+  Logout(){
+    this.service.logoutUser();
+    this.router.navigate(['/login']);
+      
+  }
+
+
 }

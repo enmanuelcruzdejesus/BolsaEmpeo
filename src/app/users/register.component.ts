@@ -24,9 +24,7 @@ export class RegisterComponent implements OnInit {
   register() : void{
       
       this.service.registerUser(this.user).subscribe((res)=>{
-       this.service.setToken(res.token);
-       this.response = res;
-       localStorage.setItem('token',res.token);
+       this.service.setToken(res.token);      
        this.router.navigate(['/login']);
      },(err)=>{
        console.error(err);

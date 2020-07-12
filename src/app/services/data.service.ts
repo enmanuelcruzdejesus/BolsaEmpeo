@@ -20,12 +20,23 @@ export class DataService {
   };
 
 
-
-
-  constructor(private httpClient: HttpClient)
-  { 
+  constructor(private httpClient: HttpClient) { 
      
   }
+
+  loggedIn(): boolean{
+    return !!localStorage.getItem('token');
+  }
+
+  getToken(): string{
+    return localStorage.getItem('token');
+  }
+
+  logoutUser(): void{
+    localStorage.removeItem('token');
+    
+  }
+
 
   setToken(token: string){
   
@@ -33,11 +44,21 @@ export class DataService {
    
   }
 
+  getCurrentUser(): User{
 
+    if(this.loggedIn()){
+      let u =  JSON.parse(localStorage.getItem('user')) ;
+      return u;
 
+    }
+    else{
+     return null;
+    }
+  
+  }
+  
   registerUser(user: User): Observable<any>{
-      
-    
+          
       return this.httpClient.post<any>("http://localhost:5000/api/users/",user,this.httpOptions);
     
   }
@@ -67,8 +88,7 @@ export class DataService {
 
   getJobs(): Observable<Job[]> {
 
-     console.log(JSON.stringify(this.httpOptions));
-      return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/",this.httpOptions);
+          return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/",this.httpOptions);
       
   }
    
@@ -109,23 +129,7 @@ export class DataService {
  }
 
  
-
-  loggedIn(): boolean{
-    return !!localStorage.getItem('token');
-  }
-
-  getToken(): string{
-    return localStorage.getItem('token');
-  }
-
-  logoutUser(): void{
-    localStorage.removeItem('token');
-    
-  }
-
-
-
-  errorHandler(errorResponse: HttpErrorResponse){
+  errorHandler(errorResponse: HttpErrorResponse) {
      if(errorResponse.error instanceof ErrorEvent){
        console.error("Client side error", errorResponse.error.message);
      }
