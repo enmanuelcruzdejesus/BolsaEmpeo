@@ -1,3 +1,4 @@
+import { User } from './../models/user';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../services/data.service';
@@ -25,6 +26,8 @@ export class JobListComponent implements OnDestroy, OnInit {
     itemsPerPage: 3,
     currentPage: 1
   };;
+
+  user: User;
   
 
 
@@ -41,27 +44,14 @@ export class JobListComponent implements OnDestroy, OnInit {
       pagingType: 'full_numbers',
       pageLength: 10
     };
-
+    this.user = this.service.getCurrentUser();
  
    
     
     
-   /* this.service.getJobs().subscribe(jobs=>{
-      this.jobs = jobs;
-      this.dtTrigger.next();
-    });
-    */
-
     this.fetchJobs(); 
     this.dtTrigger.next();
     
-  //  this.categoryFiller();
-    
-    
-    //  this.service.getConfigs().subscribe((res)=>{
-    //    let c = res.pop();
-    //    this.config.itemsPerPage = c.amount;
-    //  })
 
   }
 
@@ -153,6 +143,23 @@ adminPanel(){
 logout(){
   this.service.logoutUser();
   this.router.navigate(['']);
+}
+
+showAdminPanel(): boolean{
+  if(this.user === null || undefined)  return false;
+  if(this.user.rol === "Administrador")
+   return true;
+   else
+   return false;
+}
+
+showPost(): boolean{
+  if(this.user === null || undefined)  return false;
+  if(this.user.rol === "Poster") 
+   return true;
+  else
+    return false;
+
 }
 
 

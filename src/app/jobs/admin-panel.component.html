@@ -2,9 +2,11 @@
     <h1>Admin Panel</h1>
     <form action="POST">
         <div class="form-group">
-            <label for="amount" class="control-label">Numero de paginacion:</label>
+            <label for="amount" class="control-label">Numero de paginacion: </label>
             <input type="text" id="amount" name="amount" [(ngModel)] = "config.amount"  class="col-md-5 form-control">
+            <button class="btn btn-primary btn-sm" (click)="editConfig()">Aceptar</button>
         </div>
+
 
         <div class="form-group">
             <table class="table" style="background-color: white;">

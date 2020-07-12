@@ -7,8 +7,8 @@
             <button id="buttonSearch">Search</button>
         </div>
         <div class="rightmenu">            
-            <button id="postJobButton" class="btn btn-primary btn-md" (click)="postJob()">Post Job</button>
-            <button id="adminPanelButton" class="btn btn-primary btn-md" (click)="adminPanel()">Admin Panel</button>         
+            <button id="postJobButton" *ngIf="showPost()"  class="btn btn-primary btn-md" (click)="postJob()">Post Job</button>
+            <button id="adminPanelButton"  *ngIf="showAdminPanel()" class="btn btn-primary btn-md" (click)="adminPanel()">Admin Panel</button>         
         </div>
       
     </div>
@@ -27,7 +27,7 @@
                         <th scope="col">Position</th>
                         <th scope="col">Location</th>
                         <th scope="col">Detail</th>
-                        <th>Admin Panel</th>
+                        <th *ngIf="showAdminPanel()" >Admin Panel</th>
 
                     </tr>
                 </thead>
@@ -37,9 +37,9 @@
                         <td>{{job.company}}</td>
                         <td>{{job.position}}</td>
                         <td>{{job.location}}</td>
-                        <td><button id="detailButton" class="btn btn-primary col-md-4" (click)="jobDetail(job._id)">Go</button></td>
+                        <td><button id="detailButton" class="btn btn-primary col-md-5" (click)="jobDetail(job._id)">Go</button></td>
                         <td>
-                            <app-control-panel [job] ="job"></app-control-panel>
+                            <app-control-panel *ngIf="showAdminPanel()" [job] ="job"></app-control-panel>
                         </td>
                     </tr>
 

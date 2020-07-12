@@ -41,6 +41,14 @@ export class AdminPanelComponent implements OnInit {
       console.error(err)
     });
   }
+
+  editConfig(){
+    this.service.updateConfigs(this.config).subscribe((res)=>{
+      this.config = res;
+    },(err)=>{console.error(err)});
+  }
+
+  
  
 
 }

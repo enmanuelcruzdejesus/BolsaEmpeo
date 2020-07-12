@@ -32,6 +32,8 @@ export class DataService {
     return localStorage.getItem('token');
   }
 
+ 
+
   logoutUser(): void{
     localStorage.removeItem('token');
     
@@ -94,7 +96,7 @@ export class DataService {
    
   getJobById(id: string){
 
-    return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/"+id,this.httpOptions);
+    return this.httpClient.get<Job>("http://localhost:5000/api/jobs/"+id,this.httpOptions);
   }
 
   getJobByCategory(id: string): Observable<Job[]>{
@@ -124,8 +126,8 @@ export class DataService {
      
  }
 
- updateConfigs(){
-   
+ updateConfigs(c: Config): Observable<any>{
+   return this.httpClient.put<any>("http://localhost:5000/api/configs/"+c._id,c,this.httpOptions);
  }
 
  
