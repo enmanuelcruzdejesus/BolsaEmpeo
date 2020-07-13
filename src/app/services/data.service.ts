@@ -93,6 +93,12 @@ export class DataService {
           return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/",this.httpOptions);
       
   }
+  
+  getSearchJob(s: string): Observable<Job[]> {
+
+    return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/search/"+s,this.httpOptions);
+
+}
 
   getJobLogo(fileName: string): Observable<Blob> {
     return this.httpClient.get("http://localhost:5000/api/jobs/logos/"+fileName, { responseType: 'blob' });

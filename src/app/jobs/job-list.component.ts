@@ -28,6 +28,9 @@ export class JobListComponent implements OnDestroy, OnInit {
   };;
 
   user: User;
+  searchTerm: string;
+  filteredJobs: any;
+
   
 
 
@@ -45,14 +48,22 @@ export class JobListComponent implements OnDestroy, OnInit {
       pageLength: 10
     };
     this.user = this.service.getCurrentUser();
- 
-   
-    
-    
-    this.fetchJobs(); 
+    this.fetchJobs();     
     this.dtTrigger.next();
-    
+   
 
+  }
+
+  filteredJob(value: string){
+     if(value.trim() === ""){
+       this.filteredJobs = this.jobs;
+     }
+
+     this.service.getSearchJob(value).subscribe((res)=>
+     {
+       this.filteredJobs = res;
+       console.log(res);
+     },(err)=>{console.error(err)});
   }
 
   jobDetail(id:any): void{
@@ -94,11 +105,8 @@ export class JobListComponent implements OnDestroy, OnInit {
 
     this.service.getJobs().subscribe((res)=>{
       this.jobs = res;
-      
-      
-      console.log(res);
-      
-
+      this.filteredJobs = res;
+ 
       for(let counter in this.jobs){
 
       

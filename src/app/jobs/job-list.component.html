@@ -3,8 +3,8 @@
     <hr>
     <div  class="mainmenu container">
         <div class="leftmenu">
-            <input id="search" type="text">
-            <button id="buttonSearch">Search</button>
+            <input id="search" #search placeholder="Search" [(ngModel)] = "searchTerm" (keyup.enter)="filteredJob(search.value)" type="text">
+            <button id="buttonSearch"  (click) = "filteredJob(search.value)">Search</button>
         </div>
         <div class="rightmenu">            
             <button id="postJobButton" *ngIf="showPost()"  class="btn btn-primary btn-md" (click)="postJob()">Post Job</button>
@@ -31,7 +31,7 @@
 
                     </tr>
                 </thead>
-                <tbody *ngFor="let job of jobs | paginate: config">
+                <tbody *ngFor="let job of filteredJobs | paginate: config">
                     <tr *ngIf="job.category.tipo === cat">
 
                         <td>{{job.company}}</td>
