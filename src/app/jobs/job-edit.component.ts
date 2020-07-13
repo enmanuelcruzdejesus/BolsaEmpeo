@@ -15,6 +15,7 @@ export class JobEditComponent implements OnInit {
    job: Job;
    categories: Category[];
    form: FormGroup;
+   selectedFile: any;
 
 
   constructor(private service: DataService, private router:ActivatedRoute) { }
@@ -51,8 +52,9 @@ export class JobEditComponent implements OnInit {
 
   uploadFile(event) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.form.get('logo').setValue(file, {emitModelToViewChange: false});
+      const file = event.target.files[0];   
+      this.selectedFile = file;
+     // this.form.get('logo').setValue(file, {emitModelToViewChange: false});
     }
   }
 
@@ -67,7 +69,8 @@ export class JobEditComponent implements OnInit {
     formdata.append("location",this.job.location);
     formdata.append("compemail",this.job.compemail);
     formdata.append("description",this.job.description);
-    formdata.append("logo",this.job.logo);
+    if(this.selectedFile != null && this.selectedFile != undefined)
+    formdata.append("logo",this.selectedFile);
 
 
     this.service.editJob(this.job._id,formdata).subscribe((res)=>{

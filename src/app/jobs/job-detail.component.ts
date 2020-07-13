@@ -13,41 +13,49 @@ export class JobDetailComponent implements OnInit {
 
 
    job = new Job();
-   ImageToShow: any;
+   imageToShow: any;
   
   constructor(private route: ActivatedRoute, private service: DataService) {
     
   }
 
   ngOnInit(): void {
+
+    let id = "";
     this.route.params.subscribe((params: Params) => {
-      const id = params.id;
+       id = params.id;
       console.log(id);
-      this.service.getJobById(id).subscribe((res)=>{
-       
-        this.job = res;
-        console.log(this.job);
-
-        var name = this.job.logo;
-        console.log(name);
-        this.service.getJobLogo(name).subscribe((res)=>{
-          this.ImageToShow = res;
-          console.log(this.ImageToShow);
-        })
-  
-
-        
-      });
-
-     
-
-  
     });
+    this.service.getJobById(id).subscribe((res)=>{
+       
+      this.job = res;
+      console.log(this.job);     
+
+      this.service.getJobLogo(this.job.logo).subscribe((res)=>{
+        this.createImageFromBlob(res);
+        console.log(res);
+      },(err)=>{console.error(err)});
+
+
+      
+    });
+
+    
+
 
     
   }
 
-  
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.imageToShow = reader.result;
+    }, false);
+ 
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+ }
 
 
 
