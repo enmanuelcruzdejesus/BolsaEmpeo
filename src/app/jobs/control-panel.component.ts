@@ -20,7 +20,8 @@ export class ControlPanelComponent implements OnInit {
 
   EditJob(){
 
-    console.log(this.job);
+    
+    this.router.navigate(['/editjob/'+this.job._id]);
 
   }
 

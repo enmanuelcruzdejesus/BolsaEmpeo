@@ -93,6 +93,10 @@ export class DataService {
           return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/",this.httpOptions);
       
   }
+
+  getJobLogo(fileName: string): Observable<any> {
+    return this.httpClient.get<any>("http://localhost:5000/api/jobs/logos/"+fileName);
+  }
    
   getJobById(id: string){
 
@@ -111,8 +115,8 @@ export class DataService {
      
   }
 
-  editJob(j: Job): Observable<Job> {
-    return this.httpClient.put<Job>("http://localhost:5000/api/jobs/",j,this.httpOptions);
+  editJob(id: string, f: FormData): Observable<Job> {
+    return this.httpClient.put<Job>("http://localhost:5000/api/jobs/"+id,f);
   }
 
   deleteJob(id: string): Observable<any>{

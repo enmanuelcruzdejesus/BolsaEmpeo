@@ -1,3 +1,4 @@
+import { JobEditComponent } from './jobs/job-edit.component';
 
 import { AdminPanelComponent } from './jobs/admin-panel.component';
 import { AuthguardService } from './services/authguard.service';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: '' , redirectTo: "/jobs" , pathMatch: 'full'},
   {path:'jobs' , component: JobListComponent},
   {path:'jobs/:id' , component: JobDetailComponent},
+  {path:'editjob/:id' , component: JobEditComponent},
   {path:'login' , component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path:'create-job' , component: PostJobComponent},
@@ -30,4 +32,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const rountingComponents = [JobListComponent,JobDetailComponent,LoginComponent,RegisterComponent,PagenotfoundComponent,PostJobComponent,AdminPanelComponent];
+export const rountingComponents = [JobListComponent,JobDetailComponent,LoginComponent,RegisterComponent,PagenotfoundComponent,PostJobComponent,AdminPanelComponent,JobEditComponent];

@@ -8,7 +8,7 @@ export class Job{
     url: string;
     position: string;
     location: string;
-    email: string;
+    compemail: string;
     description: string;
     logo: string;
     date: Date;

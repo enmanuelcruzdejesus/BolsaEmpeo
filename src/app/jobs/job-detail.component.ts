@@ -13,6 +13,7 @@ export class JobDetailComponent implements OnInit {
 
 
    job = new Job();
+   ImageToShow: any;
   
   constructor(private route: ActivatedRoute, private service: DataService) {
     
@@ -25,11 +26,21 @@ export class JobDetailComponent implements OnInit {
       this.service.getJobById(id).subscribe((res)=>{
        
         this.job = res;
+        console.log(this.job);
+
+        var name = this.job.logo;
+        console.log(name);
+        this.service.getJobLogo(name).subscribe((res)=>{
+          this.ImageToShow = res;
+          console.log(this.ImageToShow);
+        })
+  
 
         
       });
 
      
+
   
     });
 
