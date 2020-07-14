@@ -1,3 +1,4 @@
+import { ToastService } from './../services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class PostJobComponent implements OnInit {
 
 
 
-  constructor(private service: DataService, private router: Router) { }
+  constructor(private service: DataService, private router: Router, private toastr: ToastService) { }
 
   ngOnInit(): void {
 
@@ -80,7 +81,7 @@ export class PostJobComponent implements OnInit {
      
      this.response = res;
      
-     
+     this.toastr.Success("Job Created!");
      this.router.navigate(['/jobs']);
    },(err)=>{
      console.error(err);

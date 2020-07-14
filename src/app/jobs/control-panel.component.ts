@@ -1,3 +1,4 @@
+import { ToastService } from './../services/toast.service';
 import { Router } from '@angular/router';
 import { DataService } from './../services/data.service';
 import { Job } from './../models/job';
@@ -13,7 +14,7 @@ export class ControlPanelComponent implements OnInit {
   @Input() job: Job;
   @Output() afterDeleting: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private service: DataService, private router: Router) { }
+  constructor(private service: DataService, private router: Router, private toastr: ToastService) { }
 
   ngOnInit(): void {
 
@@ -27,9 +28,10 @@ export class ControlPanelComponent implements OnInit {
   }
 
   DeleteJob(){
-
+    this.toastr.Error("Job Deleted","Successful");
     this.service.deleteJob(this.job._id).subscribe((res)=>{console.log(res)},(err)=>{console.error(err)});
     this.afterDeleting.emit(this.job);
+   
   }
 
 

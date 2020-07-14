@@ -1,3 +1,4 @@
+import { ToastService } from './../services/toast.service';
 import { Job } from 'src/app/models/job';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { DataService } from './../services/data.service';
@@ -18,12 +19,12 @@ export class JobEditComponent implements OnInit {
    selectedFile: any;
 
 
-  constructor(private service: DataService, private router:ActivatedRoute) { }
+  constructor(private service: DataService, private router: Router, private activeRouter:ActivatedRoute, private toastr: ToastService) { }
 
   ngOnInit(): void {
  
 
-    this.router.params.subscribe((params: Params) => {
+    this.activeRouter.params.subscribe((params: Params) => {
       const id = params.id;
       console.log(id);
       this.service.getJobById(id).subscribe((res)=>{
@@ -73,6 +74,12 @@ export class JobEditComponent implements OnInit {
     this.service.editJob(this.job._id,formdata).subscribe((res)=>{
 
      console.log(res);
+
+     this.toastr.Success("Job edited");
+
+     
+
+     
   
    },(err)=>{
      console.error(err);

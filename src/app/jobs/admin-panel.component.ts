@@ -38,6 +38,7 @@ export class AdminPanelComponent implements OnInit {
   postCategory(c: string){
     let ca = new Category();
     ca.tipo = c;
+    this.categories.push(ca);
     this.service.createCategory(ca).subscribe((res)=>{
       console.log(res);
        this.toastr.Success("Success",'Category was created successfully');

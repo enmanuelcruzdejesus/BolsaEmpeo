@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 declare var toastr: any;
 
@@ -8,26 +9,26 @@ declare var toastr: any;
 })
 export class ToastService {
 
-  constructor() { }
+  constructor(private toastr: ToastrService ) { }
 
-  Success(title: string, mesage?:string){
+  Success(message: string, title?:string){
 
-    toastr.success(title,mesage);
+    this.toastr.success(message,title);
 
   }
 
   Warning(message: string, title?:string){
 
-    toastr.warning(message,title);
+    this.toastr.warning(message,title);
 
   }
 
   Error(message: string, title?:string){
-    toastr.error(message,title);
+    this.toastr.error(message,title);
   }
 
-  Info(message: string){
-    toastr.Infor(message);
+  Info(message: string, title: string){
+    this.toastr.info(message, title);
   }
 
 }

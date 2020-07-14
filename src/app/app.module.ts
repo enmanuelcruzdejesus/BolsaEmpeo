@@ -22,6 +22,8 @@ import { ToastService } from './services/toast.service';
 import { JobCategoryComponent } from './jobs/job-category.component';
 import  {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -46,7 +48,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxPaginationModule,
     PipesModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    NgbAlertModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [ToastService,DataService,AuthguardService,{
