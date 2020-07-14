@@ -30,6 +30,7 @@ export class JobListComponent implements OnDestroy, OnInit {
   user: User;
   searchTerm: string;
   filteredJobs: any;
+  amount: number;
 
   
 
@@ -50,9 +51,17 @@ export class JobListComponent implements OnDestroy, OnInit {
     this.user = this.service.getCurrentUser();
     this.fetchJobs();     
     this.dtTrigger.next();
+    this.service.getConfigs().subscribe((res)=>{
+      let c = res.pop();
+      this.config.itemsPerPage = c.amount;
+      this.amount = c.amount;
+    });
    
 
   }
+   refresh(data){
+     this.filteredJobs.splice(this.filteredJobs.indexOf(data),1);
+   }
 
   filteredJob(value: string){
      if(value.trim() === ""){
@@ -102,7 +111,8 @@ export class JobListComponent implements OnDestroy, OnInit {
     }
   }
   fetchJobs(){
-
+    this.jobs = null;
+    this.filteredJobs = null;
     this.service.getJobs().subscribe((res)=>{
       this.jobs = res;
       this.filteredJobs = res;

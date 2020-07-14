@@ -19,7 +19,7 @@
 
             <h1>{{cat}}</h1>
             <hr>
-            <table class="table" style="background-color: white;">
+            <table class="table" style="background-color: white;" *ngIf="filteredJobs">
                 <thead class="thead-dark">
                     <tr>
 
@@ -31,7 +31,7 @@
 
                     </tr>
                 </thead>
-                <tbody *ngFor="let job of filteredJobs | paginate: config">
+                <tbody *ngFor="let job of filteredJobs.slice(0, amount); ">
                     <tr *ngIf="job.category.tipo === cat">
 
                         <td>{{job.company}}</td>
@@ -39,7 +39,7 @@
                         <td>{{job.location}}</td>
                         <td><button id="detailButton" class="btn btn-primary col-md-5" (click)="jobDetail(job._id)">Go</button></td>
                         <td>
-                            <app-control-panel *ngIf="showAdminPanel()" [job] ="job"></app-control-panel>
+                            <app-control-panel *ngIf="showAdminPanel()" [job] ="job" (afterDeleting)="refresh($event)"></app-control-panel>
                         </td>
                     </tr>
 

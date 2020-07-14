@@ -38,9 +38,6 @@ export class JobEditComponent implements OnInit {
     });
 
     
-  
-
- 
     this.service.getCategory().subscribe((res)=>{
       this.categories = res;     
     },(err)=>{

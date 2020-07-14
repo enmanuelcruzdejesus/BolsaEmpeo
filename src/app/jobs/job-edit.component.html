@@ -8,8 +8,8 @@
 
         <div class="form-group">
             <label for="category" class="control-label">Categories</label>
-            <select id="category" name="category"  [(ngModel)] = "job.category">
-                <option *ngFor = "let val of categories" [value]="val.tipo">{{val.tipo}}</option>
+            <select id="category" name="category" class="col-md-5 form-control" [(ngModel)] = "job.category">
+                <option *ngFor = "let val of categories" [ngValue]="val.tipo">{{val.tipo}}</option>
             </select>
         </div>
 

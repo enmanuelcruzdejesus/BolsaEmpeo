@@ -1,8 +1,11 @@
+import { ToastService } from './../services/toast.service';
 import { Config } from './../models/config';
 import { Router } from '@angular/router';
 import { DataService } from './../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../models/category';
+
+
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,7 +18,7 @@ export class AdminPanelComponent implements OnInit {
    config : Config;
    
 
-  constructor(private service: DataService,private router: Router) { }
+  constructor(private service: DataService,private router: Router, private toastr: ToastService) { }
 
   ngOnInit(): void {
     this.service.getCategory().subscribe((res)=>
@@ -37,6 +40,7 @@ export class AdminPanelComponent implements OnInit {
     ca.tipo = c;
     this.service.createCategory(ca).subscribe((res)=>{
       console.log(res);
+       this.toastr.Success("Success",'Category was created successfully');
     },(err)=>{
       console.error(err)
     });
@@ -45,7 +49,12 @@ export class AdminPanelComponent implements OnInit {
   editConfig(){
     this.service.updateConfigs(this.config).subscribe((res)=>{
       this.config = res;
-    },(err)=>{console.error(err)});
+      this.toastr.Success("Success",'The update was perfomed successfully');
+    },(err)=>
+    {
+      console.error(err);
+      this.toastr.Error(JSON.stringify(err),'Oops');
+    });
   }
 
   

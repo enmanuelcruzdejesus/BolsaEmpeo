@@ -1,3 +1,4 @@
+
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthguardService } from './services/authguard.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +18,8 @@ import { AdminPanelComponent } from './jobs/admin-panel.component';
 import { PipesModule } from 'w-ng5';
 import { ControlPanelComponent } from './jobs/control-panel.component';
 import { JobEditComponent } from './jobs/job-edit.component';
+import { ToastService } from './services/toast.service';
+
 
 
 
@@ -29,6 +32,7 @@ import { JobEditComponent } from './jobs/job-edit.component';
     PostJobComponent,
     ControlPanelComponent,
     JobEditComponent
+  
     
   
   ],
@@ -42,9 +46,10 @@ import { JobEditComponent } from './jobs/job-edit.component';
     DataTablesModule,
     NgxPaginationModule,
     PipesModule
+    // ToastModule.forRoot()
 
   ],
-  providers: [DataService,AuthguardService,{
+  providers: [ToastService,DataService,AuthguardService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi:true
