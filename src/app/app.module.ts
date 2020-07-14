@@ -19,9 +19,9 @@ import { PipesModule } from 'w-ng5';
 import { ControlPanelComponent } from './jobs/control-panel.component';
 import { JobEditComponent } from './jobs/job-edit.component';
 import { ToastService } from './services/toast.service';
-
-
-
+import { JobCategoryComponent } from './jobs/job-category.component';
+import  {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -33,7 +33,6 @@ import { ToastService } from './services/toast.service';
     ControlPanelComponent,
     JobEditComponent
   
-    
   
   ],
   imports: [
@@ -45,8 +44,9 @@ import { ToastService } from './services/toast.service';
     BrowserAnimationsModule,
     DataTablesModule,
     NgxPaginationModule,
-    PipesModule
-    // ToastModule.forRoot()
+    PipesModule,
+    MatTableModule,
+    MatPaginatorModule
 
   ],
   providers: [ToastService,DataService,AuthguardService,{

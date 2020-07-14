@@ -17,7 +17,7 @@
 
         <div class="container mt-5" *ngFor="let cat of CATEGORIES">
 
-            <h1>{{cat}}</h1>
+            <h1> <a (click) = "showJobs(cat)" >{{cat}}</a> </h1>
             <hr>
             <table class="table" style="background-color: white;" *ngIf="filteredJobs">
                 <thead class="thead-dark">

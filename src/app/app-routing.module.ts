@@ -1,3 +1,4 @@
+import { JobCategoryComponent } from './jobs/job-category.component';
 import { JobEditComponent } from './jobs/job-edit.component';
 
 import { AdminPanelComponent } from './jobs/admin-panel.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path:'create-job' , component: PostJobComponent},
   {path: 'adminpanel', component: AdminPanelComponent },
+  {path:'job/category/:id' , component: JobCategoryComponent},
   {path: '**' , component: PagenotfoundComponent}
  
 ];
@@ -32,4 +34,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const rountingComponents = [JobListComponent,JobDetailComponent,LoginComponent,RegisterComponent,PagenotfoundComponent,PostJobComponent,AdminPanelComponent,JobEditComponent];
+export const rountingComponents = [JobListComponent,JobDetailComponent,LoginComponent,RegisterComponent,PagenotfoundComponent,PostJobComponent,AdminPanelComponent,JobEditComponent,JobCategoryComponent];

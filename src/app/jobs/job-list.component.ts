@@ -148,6 +148,9 @@ login(){
 
 }
 
+showJobs(value: string){
+  this.router.navigate(['job/category/'+value]);
+}
 signUp(){
 
   this.router.navigate(['/register']);
