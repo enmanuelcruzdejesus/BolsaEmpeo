@@ -1,3 +1,4 @@
+import { HttpClientHelper } from './HttpClientHelper';
 import { Config } from './../models/config';
 import { Job } from "src/app/models/job";
 import { Injectable } from '@angular/core';
@@ -61,84 +62,84 @@ export class DataService {
   
   registerUser(user: User): Observable<any>{
           
-      return this.httpClient.post<any>("http://localhost:5000/api/users/",user,this.httpOptions);
+      return this.httpClient.post<any>(`${HttpClientHelper.baseURL}/api/users/`,user,this.httpOptions);
     
   }
 
   login(user: User): Observable<any>{
-    return this.httpClient.post<any>("http://localhost:5000/api/users/login/",user,this.httpOptions);
+    return this.httpClient.post<any>(`${HttpClientHelper.baseURL}/api/users/login/`,user,this.httpOptions);
   }
 
 
 
   getCategory(): Observable<Category[]>{
-    return this.httpClient.get<Category[]>("http://localhost:5000/api/categories/",this.httpOptions); 
+    return this.httpClient.get<Category[]>(`${HttpClientHelper.baseURL}/api/categories/`,this.httpOptions); 
   }
 
   createCategory(c: Category): Observable<Category>{
 
-     return this.httpClient.post<Category>("http://localhost:5000/api/categories/",c,this.httpOptions);
+     return this.httpClient.post<Category>(`${HttpClientHelper.baseURL}/api/categories/`,c,this.httpOptions);
      
   }
 
   updateCategory(c: Category): Observable<Category>{
 
-    return this.httpClient.put<Category>("http://localhost:5000/api/categories/",c,this.httpOptions);
+    return this.httpClient.put<Category>(`${HttpClientHelper.baseURL}/api/categories/`,c,this.httpOptions);
     
  }
 
 
   getJobs(): Observable<Job[]> {
 
-          return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/",this.httpOptions);
+          return this.httpClient.get<Job[]>(`${HttpClientHelper.baseURL}/api/jobs/`,this.httpOptions);
       
   }
   
   getSearchJob(s: string): Observable<Job[]> {
 
-    return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/search/"+s,this.httpOptions);
+    return this.httpClient.get<Job[]>(`${HttpClientHelper.baseURL}/api/jobs/search/`+s,this.httpOptions);
 
 }
 
   getJobLogo(fileName: string): Observable<Blob> {
-    return this.httpClient.get("http://localhost:5000/api/jobs/logos/"+fileName, { responseType: 'blob' });
+    return this.httpClient.get(`${HttpClientHelper.baseURL}/api/jobs/logos/`+fileName, { responseType: 'blob' });
   }
 
 
   getJobById(id: string){
 
-    return this.httpClient.get<Job>("http://localhost:5000/api/jobs/"+id,this.httpOptions);
+    return this.httpClient.get<Job>(`${HttpClientHelper.baseURL}/api/jobs/`+id,this.httpOptions);
   }
 
   getJobByCategory(id: string): Observable<Job[]>{
 
-    return this.httpClient.get<Job[]>("http://localhost:5000/api/jobs/category/"+id,this.httpOptions);
+    return this.httpClient.get<Job[]>(`${HttpClientHelper.baseURL}/api/jobs/category/`+id,this.httpOptions);
 
   }
 
   createJob(formData: FormData): Observable<Job>{
 
-    return this.httpClient.post<Job>("http://localhost:5000/api/jobs/",formData);
+    return this.httpClient.post<Job>(`${HttpClientHelper.baseURL}/api/jobs/`,formData);
      
   }
 
   editJob(id: string, f: FormData): Observable<Job> {
-    return this.httpClient.put<Job>("http://localhost:5000/api/jobs/"+id,f);
+    return this.httpClient.put<Job>(`${HttpClientHelper.baseURL}/api/jobs/`+id,f);
   }
 
   deleteJob(id: string): Observable<any>{
-    return this.httpClient.delete<any>("http://localhost:5000/api/jobs/"+id,this.httpOptions);
+    return this.httpClient.delete<any>(`${HttpClientHelper.baseURL}/api/jobs/`+id,this.httpOptions);
   }
 
   getConfigs(): Observable<Config[]> {
 
   
-     return this.httpClient.get<Config[]>("http://localhost:5000/api/configs/",this.httpOptions);
+     return this.httpClient.get<Config[]>(`${HttpClientHelper.baseURL}/api/configs/`,this.httpOptions);
      
  }
 
  updateConfigs(c: Config): Observable<any>{
-   return this.httpClient.put<any>("http://localhost:5000/api/configs/"+c._id,c,this.httpOptions);
+   return this.httpClient.put<any>(`${HttpClientHelper.baseURL}/api/configs/`+c._id,c,this.httpOptions);
  }
 
  
