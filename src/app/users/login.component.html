@@ -3,11 +3,11 @@
         <h2>Login</h2>
         <div class="form-group">
             <label for="email" class="control-label" >Email</label>
-            <input type="email" id="email" name="email" [(ngModel)] = "user.email" class="form-control col-md-5">
+            <input type="email" id="email" name="email" [(ngModel)] = "user.email" class="form-control col-md-5" required>
         </div> 
         <div class="form-group">
-            <label for="password" class="control-label" >Password</label>
-            <input id="password" name="password" type="password" class="form-control col-md-5" [(ngModel)] = "user.password">
+            <label for="password" class="control-label" >Password</label >
+            <input id="password" name="password" type="password" class="form-control col-md-5" [(ngModel)] = "user.password" required>
             <a class="btn btn-link" routerLink="/register" >Sign up</a>
         </div> 
 
